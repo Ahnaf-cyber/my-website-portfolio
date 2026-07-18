@@ -10,8 +10,10 @@
             color: #ffffff; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             text-align: center; 
-            padding-top: 120px; 
+            padding: 120px 20px 40px; 
             margin: 0;
+            overflow-x: hidden;
+            box-sizing: border-box;
         }
         h1 { 
             color: #00ffcc; 
@@ -25,6 +27,7 @@
             max-width: 600px;
             margin: 0 auto 40px auto;
             line-height: 1.6;
+            overflow-wrap: anywhere;
         }
         a { 
             display: inline-block;
@@ -37,12 +40,32 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            max-width: 100%;
         }
         a:hover { 
             color: #050505; 
             background-color: #00ffcc;
             box-shadow: 0 0 15px #00ffcc;
             transform: translateY(-3px);
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 100px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            a {
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
