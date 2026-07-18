@@ -232,7 +232,7 @@
                 <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
                 
                 <li class="dropdown">
-                    <a href="index.html#services" class="dropbtn"><i class="fas fa-cogs"></i> Services <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="dropbtn"><i class="fas fa-cogs"></i> Services <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="web-development.html">Web Design & Development</a></li>
                         <li><a href="monitoring.html">Website Monitoring & Maintenance</a></li>
@@ -351,12 +351,20 @@
             });
 
             document.querySelectorAll('.dropdown').forEach((dropdown) => {
-                dropdown.addEventListener('click', (event) => {
-                    if (window.innerWidth <= 768) {
+                const dropbtn = dropdown.querySelector('.dropbtn');
+
+                if (dropbtn) {
+                    dropbtn.addEventListener('click', (event) => {
                         event.preventDefault();
-                        dropdown.classList.toggle('active');
-                    }
-                });
+                        event.stopPropagation();
+
+                        const isOpen = dropdown.classList.contains('active');
+                        document.querySelectorAll('.dropdown').forEach((item) => item.classList.remove('active'));
+                        if (!isOpen) {
+                            dropdown.classList.add('active');
+                        }
+                    });
+                }
             });
 
             document.addEventListener('click', (event) => {
