@@ -963,7 +963,7 @@ body {
     }
 
     .nav-links {
-        display: none; 
+        display: flex;
         flex-direction: column;
         position: absolute;
         top: 100%;
@@ -976,31 +976,31 @@ body {
         list-style: none;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
         z-index: 100;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
     }
 
     .nav-links.active {
-        display: flex !important;
-    }
-
-    .nav-links li {
-        width: 100%;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 12px 25px;
-        font-size: 15px;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .dropdown-content {
         position: static;
         width: 100%;
         background-color: rgba(20, 30, 50, 0.95) !important;
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
         padding-left: 15px;
     }
 
-    .dropdown:hover .dropdown-content {
-        display: block !important;
+    .dropdown:hover .dropdown-content,
+    .dropdown.open .dropdown-content {
+        max-height: 500px;
     }
 }
