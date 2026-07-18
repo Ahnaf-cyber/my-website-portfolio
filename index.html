@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS Cyber Web - Cyber Security & Web Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background: #071138 !important;
+        }
+        #cyber-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-section .overlay {
+            z-index: 2;
+            background: linear-gradient(135deg, rgba(2, 6, 23, 0.85) 0%, rgba(0, 242, 254, 0.15) 100%);
+        }
+        .hero-section .content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .services-section {
+            position: relative;
+            overflow: hidden;
+            background: #020617 !important;
+        }
+        #matrix-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+      
+        .services-section .section-title,
+        .services-section .services-grid {
+            position: relative;
+            z-index: 2;
+        }
+
+ 
+        .booking-section {
+            position: relative;
+            overflow: hidden;
+            background: #020617 !important;
+        }
+        #grid-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .booking-section .section-title,
+        .booking-section .contact-info-container,
+        .booking-section .form-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reviews-section {
+            background: #040d21 !important;
+            padding: 60px 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .reviews-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .reviews-display-box {
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            max-height: 500px;
+            overflow-y: auto;
+            text-align: left;
+        }
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #00f2fe;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .review-card h4 {
+            margin: 0 0 5px 0;
+            color: #00f2fe;
+            font-size: 16px;
+        }
+        .review-stars {
+            color: #ffc107;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .review-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+        .review-form-box {
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: left;
+        }
+        .star-rating-input {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #475569;
+        }
+        .star-rating-input i {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating-input i.active,
+        .star-rating-input i:hover,
+        .star-rating-input i:hover ~ i {
+            color: #ffc107;
+        }
+        .no-reviews {
+            color: #64748b;
+            text-align: center;
+            font-style: italic;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AS Cyber <span>Web</span></a>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <a href="#about"><i class="fas fa-user"></i> About</a>
+                <li class="dropdown">
+                    <a href="#services" class="dropbtn"><i class="fas fa-cogs"></i> Services <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="web-development.html">Web Design & Development</a></li>
+                        <li><a href="monitoring.html">Website Monitoring & Maintenance</a></li>
+                        <li><a href="malware-removal.html">WordPress Malware Removal</a></li>
+                        <li><a href="software-development.html">Software Development</a></li>
+                        <li><a href="project-help.html">Project & IT Assignment Help</a></li>
+                        <li><a href="graphics-design.html">Graphics Design Services</a></li>
+                        <li><a href="vulnerability-assessment.html">Security Assessment Services</a></li>
+                        <li><a href="remote-support.html">On Demand Remote IT Support</a></li>
+                    </ul>
+                </li>
+                <li><a href="#reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a href="#booking"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section">
+        <canvas id="cyber-canvas"></canvas>
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>AS Cyber Web</h1>
+            <p>Purchase Your Valuable Services in Reasonable Price with Best Results</p>
+            <a href="#services" class="cyber-btn">Explore Services</a>
+        </div>
+    </header>
+
+<section id="about" class="about-section">
+    <div class="about-container">
+        
+        <div class="about-content">
+            <h2 class="about-title">About Me</h2>
+            
+            <p class="about-text">
+                Hi, I am Ahnaf Shakil from Australia. At first take my respect and love. I am a professional Cyber Security Specialist, Web Developer and Software Maker. With a strong passion for defensive security, robust coding and automation, I bridge the gap between building high performance software and securing digital assets from modern threats.
+            </p>
+            <p class="about-text">
+                Whether it is creating clean, responsive websites, developing custom software solutions or implementing advanced security measures to protect your digital presence, I bring a comprehensive and secure by design approach to every project. I thrive on solving complex technical challenges and delivering secure, reliable and optimized solutions. Let's build and secure your next big project together.
+            </p>
+            <div class="about-buttons">
+                <a href="#booking" class="btn-primary">Contact</a>
+            </div>
+        </div>
+
+        <div class="about-image-wrapper">
+            <div class="image-glow-effect"></div>
+            <img src="image/Ahnaf.png" alt="Ahnaf Shakil" class="about-img">
+        </div>
+
+    </div>
+</section>
+
+    <section id="services" class="services-section">
+        <canvas id="matrix-canvas"></canvas>
+
+        <h2 class="section-title">Our Professional Services</h2>
+        
+        <div class="services-grid">
+            
+            <div class="service-card" onclick="location.href='web-development.html'">
+                <div class="icon-box">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Design & Development</h3>
+                <p class="service-price">From 300 USD</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Custom Web Design</li>
+                    <li><i class="fas fa-check-circle"></i> Mobile-Friendly Layout</li>
+                    <li><i class="fas fa-check-circle"></i> Fast Loading Speed</li>
+                    <li><i class="fas fa-check-circle"></i> SEO-Friendly Structure</li>
+                    <li><i class="fas fa-check-circle"></i> Easy Admin Panel</li>
+                    <li><i class="fas fa-check-circle"></i> 2 Months Free Maintenance</li>
+                    <li><i class="fas fa-check-circle"></i> 1 Month Free Security</li>
+                    <li><i class="fas fa-check-circle"></i> Ongoing Technical Support</li>
+                </ul>
+            </div>
+
+            <div class="service-card" onclick="location.href='monitoring.html'">
+                <div class="icon-box">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Website Monitoring & Maintenance</h3>
+                <p class="service-price">Starting Monthly Package 53 USD/Month</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> 24/7 Website Monitoring</li>
+                    <li><i class="fas fa-check-circle"></i> Regular Updates</li>
+                    <li><i class="fas fa-check-circle"></i> Routine Maintenance</li>
+                    <li><i class="fas fa-check-circle"></i> Automatic Backups</li>
+                    <li><i class="fas fa-check-circle"></i> Uptime Monitoring</li>
+                    <li><i class="fas fa-check-circle"></i> Performance Optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Security Monitoring</li>
+                    <li><i class="fas fa-check-circle"></i> Broken Link Checks</li>
+                    <li><i class="fas fa-check-circle"></i> Database Optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Bug Fixes</li>
+                    <li><i class="fas fa-check-circle"></i> Monthly Reports</li>
+                    <li><i class="fas fa-check-circle"></i> Priority Support</li>
+                </ul>
+            </div>
+
+            <div class="service-card" onclick="location.href='malware-removal.html'">
+                <div class="icon-box">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                <h3>WordPress Malware Removal</h3>
+                <p class="service-price">From 60 USD</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Malware Scan & Clean</li>
+                    <li><i class="fas fa-check-circle"></i> Error Troubleshooting</li>
+                    <li><i class="fas fa-check-circle"></i> Vulnerability Detection</li>
+                    <li><i class="fas fa-check-circle"></i> Security Hardening</li>
+                    <li><i class="fas fa-check-circle"></i> Broken Link Repair</li>
+                    <li><i class="fas fa-check-circle"></i> Conflict Resolution</li>
+                    <li><i class="fas fa-check-circle"></i> Website Recovery</li>
+                    <li><i class="fas fa-check-circle"></i> Post-Clean Report</li>
+                </ul>
+            </div>
+
+            <div class="service-card" onclick="location.href='software-development.html'">
+                <div class="icon-box">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Software Development</h3>
+                <p class="service-price">From 130 USD</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Custom App Development</li>
+                    <li><i class="fas fa-check-circle"></i> Desktop Solutions</li>
+                    <li><i class="fas fa-check-circle"></i> Business Automations</li>
+                    <li><i class="fas fa-check-circle"></i> Secure Database Setup</li>
+                    <li><i class="fas fa-check-circle"></i> Performance Tweaks</li>
+                    <li><i class="fas fa-check-circle"></i> Source Code Ownership</li>
+                    <li><i class="fas fa-check-circle"></i> QA & Bug Testing</li>
+                    <li><i class="fas fa-check-circle"></i> Scalable Architecture</li>
+                </ul>
+            </div>
+
+            <div class="service-card" onclick="location.href='project-help.html'">
+                <div class="icon-box">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Helping Hand for Creating Project</h3>
+                <p class="service-price">Price Negotiable</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Assignment Assistance</li>
+                    <li><i class="fas fa-check-circle"></i> Database Design & 3NF</li>
+                    <li><i class="fas fa-check-circle"></i> IT Project Guidance</li>
+                    <li><i class="fas fa-check-circle"></i> Python Automation</li>
+                    <li><i class="fas fa-check-circle"></i> Code Review & Testing</li>
+                    <li><i class="fas fa-check-circle"></i> C, Java, Python Solutions</li>
+                </ul>
+            </div>
+
+        
+            <div class="service-card" onclick="location.href='graphics-design.html'">
+                <div class="icon-box">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Graphics Design</h3>
+                <p class="service-price">From 11 USD</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Custom Logo Design</li>
+                    <li><i class="fas fa-check-circle"></i> Social Banners & Posts</li>
+                    <li><i class="fas fa-check-circle"></i> Business Cards / Flyers</li>
+                    <li><i class="fas fa-check-circle"></i> Vector Illustrations</li>
+                    <li><i class="fas fa-check-circle"></i> Photoshop Editing</li>
+                    <li><i class="fas fa-check-circle"></i> Face Retouching & Editing</li>
+                </ul>
+            </div>
+
+            <div class="service-card" onclick="location.href='vulnerability-assessment.html'">
+                <div class="icon-box">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Security Assessment Services</h3>
+                <p class="service-price">From 60 USD</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Web Application Vulnerability Assessment</li>
+                    <li><i class="fas fa-check-circle"></i> API Security & Endpoint Testing</li>
+                    <li><i class="fas fa-check-circle"></i> CMS & Platform Security Audits</li>
+                    <li><i class="fas fa-check-circle"></i> Network & Perimeter Audits</li>
+                    <li><i class="fas fa-check-circle"></i> Executive & Developer Reports</li>
+                    <li><i class="fas fa-check-circle"></i> End-to-End Vulnerability Patching</li>
+                </ul>
+            </div>
+
+            <div class="service-card" onclick="location.href='remote-support.html'">
+                <div class="icon-box">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>On Demand Remote IT Support</h3>
+                <p class="service-price">From 30 USD</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> OS Troubleshooting & Tuning</li>
+                    <li><i class="fas fa-check-circle"></i> Software Deployment & Config</li>
+                    <li><i class="fas fa-check-circle"></i> System Malware & Ransomware Cleanup</li>
+                    <li><i class="fas fa-check-circle"></i> Network & Connectivity Diagnostics</li>
+                    <li><i class="fas fa-check-circle"></i> Environment Variable Tuning</li>
+                    <li><i class="fas fa-check-circle"></i> Proactive Endpoint Hardening</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section">
+        <h2 class="section-title">Client Testimonials & Reviews</h2>
+        <div class="reviews-container">
+            <div class="reviews-display-box" id="reviews-list">
+            </div>
+
+            <div class="review-form-box">
+                <h3 style="color: #00ffcc; margin-top: 0; margin-bottom: 20px;">Share Your Feedback</h3>
+                <form id="review-submit-form">
+                    <div class="form-group">
+                        <label>Select Rating</label>
+                        <div class="star-rating-input" id="star-selector">
+                            <i class="fas fa-star" data-value="1"></i>
+                            <i class="fas fa-star" data-value="2"></i>
+                            <i class="fas fa-star" data-value="3"></i>
+                            <i class="fas fa-star" data-value="4"></i>
+                            <i class="fas fa-star" data-value="5"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rev-name">Your Name</label>
+                        <input type="text" id="rev-name" placeholder="Enter your public name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rev-text">Your Review</label>
+                        <textarea id="rev-text" rows="4" placeholder="Write your experience with AS Cyber Web..." required></textarea>
+                    </div>
+                    <button type="submit" class="cyber-btn form-btn" style="width: 100%;">Post Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <canvas id="grid-canvas"></canvas>
+
+        <h2 class="section-title">Book a Service / Contact Us</h2>
+        
+        <div class="contact-info-container">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p><a href="mailto:admin@ascyberweb.com">admin@ascyberweb.com</a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Call Us</h3>
+                <p><a href="tel:+61425185163">+61 425 185 163</a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Our Location</h3>
+                <p>3A Mckevitte Avenue, East Hills-2213, NSW</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Please enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service-select">Select Service</label>
+                    <input type="text" id="service-select" name="service" placeholder="Which service are you interested in?" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details / Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Describe your project requirements..." required></textarea>
+                </div>
+                <button type="submit" class="cyber-btn form-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer" style="text-align: center; padding: 50px 20px; position: relative; z-index: 5;">
+        <div class="footer-social-container">
+        <!-- LinkedIn (Real Icon & Color) -->
+        <a href="https://linkedin.com/in/ahnafshakil" target="_blank" class="social-3d-btn linkedin-btn" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        
+        <!-- GitHub (Real Icon & Color) -->
+        <a href="YOUR_GITHUB_URL" target="_blank" class="social-3d-btn github-btn" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        
+        <!-- Fiverr (Real Icon & Color) -->
+        <a href="YOUR_FIVERR_URL" target="_blank" class="social-3d-btn fiverr-btn" title="Fiverr">
+            <img src="image/your-fiverr-image-name.png" alt="Fiverr" class="fiverr-3d-img">
+        </a>
+    </div>
+
+    <p style="color: #9ca3af; font-size: 0.95rem; margin-top: 20px;">&copy; 2026 AS Cyber Web. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const starSelector = document.getElementById("star-selector");
+            const stars = starSelector.querySelectorAll("i");
+            const reviewsList = document.getElementById("reviews-list");
+            const reviewForm = document.getElementById("review-submit-form");
+            let selectedRating = 5; 
+
+            // Star selection behavior
+            stars.forEach(star => {
+                star.addEventListener("click", function() {
+                    selectedRating = parseInt(this.getAttribute("data-value"));
+                    updateStarsDisplay();
+                });
+            });
+
+            function updateStarsDisplay() {
+                stars.forEach(star => {
+                    const val = parseInt(star.getAttribute("data-value"));
+                    if (val <= selectedRating) {
+                        star.classList.add("active");
+                        star.style.color = "#ffc107";
+                    } else {
+                        star.classList.remove("active");
+                        star.style.color = "#475569";
+                    }
+                });
+            }
+            updateStarsDisplay();
+
+            const defaultReviews = [];
+
+            function loadReviews() {
+                let saved = localStorage.getItem("as_cyber_reviews");
+                let currentReviews = saved ? JSON.parse(saved) : defaultReviews;
+                
+                if (!saved) {
+                    localStorage.setItem("as_cyber_reviews", JSON.stringify(defaultReviews));
+                }
+
+                reviewsList.innerHTML = "";
+                if (currentReviews.length === 0) {
+                    reviewsList.innerHTML = `<div class="no-reviews">No reviews posted yet. Be the first!</div>`;
+                    return;
+                }
+
+                currentReviews.forEach(rev => {
+                    let starHtml = "";
+                    for(let i=1; i<=5; i++) {
+                        if(i <= rev.rating) {
+                            starHtml += `<i class="fas fa-star"></i> `;
+                        } else {
+                            starHtml += `<i class="far fa-star"></i> `;
+                        }
+                    }
+
+                    const card = document.createElement("div");
+                    card.className = "review-card";
+                    card.innerHTML = `
+                        <h4>${escapeHTML(rev.name)}</h4>
+                        <div class="review-stars">${starHtml}</div>
+                        <p>${escapeHTML(rev.text)}</p>
+                    `;
+                    reviewsList.appendChild(card);
+                });
+            }
+
+            function escapeHTML(str) {
+                return str.replace(/[&<>'"]/g, 
+                    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+                );
+            }
+
+            reviewForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                const nameInput = document.getElementById("rev-name");
+                const textInput = document.getElementById("rev-text");
+
+                const newReview = {
+                    name: nameInput.value.trim(),
+                    rating: selectedRating,
+                    text: textInput.value.trim()
+                };
+
+                let saved = localStorage.getItem("as_cyber_reviews");
+                let currentReviews = saved ? JSON.parse(saved) : [];
+                
+                currentReviews.unshift(newReview);
+                localStorage.setItem("as_cyber_reviews", JSON.stringify(currentReviews));
+
+                nameInput.value = "";
+                textInput.value = "";
+                selectedRating = 5;
+                updateStarsDisplay();
+
+                loadReviews();
+            });
+
+            loadReviews();
+        });
+    </script>
+
+    <script>
+        const canvas = document.getElementById('cyber-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 65; 
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                vx: (Math.random() - 0.5) * 0.8,
+                vy: (Math.random() - 0.5) * 0.8
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 255, 204, 0.6)';
+                ctx.fill();
+            });
+
+            ctx.strokeStyle = 'rgba(0, 242, 254, 0.08)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < particleCount; i++) {
+                for (let j = i + 1; j < particleCount; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+
+    <script>
+        const matrixCanvas = document.getElementById('matrix-canvas');
+        const mCtx = matrixCanvas.getContext('2d');
+
+        function resizeMatrixCanvas() {
+            matrixCanvas.width = matrixCanvas.parentElement.offsetWidth;
+            matrixCanvas.height = matrixCanvas.parentElement.offsetHeight;
+        }
+        resizeMatrixCanvas();
+        window.addEventListener('resize', resizeMatrixCanvas);
+
+        const cyberChars = "0101010101010101##$$%%&&**++//--X".split("");
+        const fontSize = 14;
+        const columns = Math.floor(matrixCanvas.width / fontSize);
+
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = Math.random() * -100;
+        }
+
+        function drawMatrix() {
+            mCtx.fillStyle = 'rgba(2, 6, 23, 0.07)'; 
+            mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            mCtx.fillStyle = 'rgba(0, 255, 204, 0.55)'; 
+            mCtx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = cyberChars[Math.floor(Math.random() * cyberChars.length)];
+                mCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 35);
+    </script>
+
+    <script>
+        const gridCanvas = document.getElementById('grid-canvas');
+        const gCtx = gridCanvas.getContext('2d');
+
+        function resizeGridCanvas() {
+            gridCanvas.width = gridCanvas.parentElement.offsetWidth;
+            gridCanvas.height = gridCanvas.parentElement.offsetHeight;
+        }
+        resizeGridCanvas();
+        window.addEventListener('resize', resizeGridCanvas);
+
+        const mapTemplate = [
+            "        ..       .   .      ...      ",
+            "       ....     ... ....   .....     ",
+            "     .......   .................     ",
+            "    .......... ...................   ",
+            "   ................................  ",
+            "    ............................     ",
+            "     ..........................      ",
+            "       .......................       ",
+            "         ...................         ",
+            "          ........  ......           ",
+            "           ......     ...            "
+        ];
+
+        let pulseTime = 0;
+
+        function drawHexagon(x, y, size) {
+            gCtx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                gCtx.lineTo(x + size * Math.cos(i * Math.PI / 3), y + size * Math.sin(i * Math.PI / 3));
+            }
+            gCtx.closePath();
+            gCtx.stroke();
+        }
+
+        function drawVectorLock(x, y, scale, alpha) {
+            gCtx.save();
+            gCtx.translate(x, y);
+            gCtx.scale(scale, scale);
+
+            gCtx.shadowColor = '#00f2fe';
+            gCtx.shadowBlur = 20;
+
+            gCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+            gCtx.beginPath();
+            gCtx.roundRect(-15, -5, 30, 24, 4);
+            gCtx.fill();
+
+            gCtx.fillStyle = '#020617';
+            gCtx.shadowBlur = 0;
+            gCtx.beginPath();
+            gCtx.arc(0, 4, 3, 0, Math.PI * 2);
+            gCtx.fill();
+            gCtx.fillRect(-1.5, 4, 3, 7);
+
+            gCtx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            gCtx.lineWidth = 3.5;
+            gCtx.lineCap = 'round';
+            gCtx.beginPath();
+            gCtx.arc(0, -5, 9, Math.PI, 0, false);
+            gCtx.stroke();
+
+            gCtx.restore();
+        }
+
+        const lockPositions = [
+            { rx: 0.22, ry: 0.35, size: 1.4 },
+            { rx: 1.43, ry: 0.45, size: 1.4 },
+            
+            { rx: 0.60, ry: 0.58, size: 1.4 },
+            { rx: 0.78, ry: 0.56, size: 1.4 }
+        ];
+
+        function drawCyberMapEffect() {
+            gCtx.fillStyle = 'rgba(2, 6, 23, 0.3)';
+            gCtx.fillRect(0, 0, gridCanvas.width, gridCanvas.height);
+
+            const w = gridCanvas.width;
+            const h = gridCanvas.height;
+            pulseTime += 0.03;
+
+            gCtx.font = '11px monospace';
+            gCtx.fillStyle = 'rgba(0, 242, 254, 0.01)';
+            for (let y = 30; y < h; y += 50) {
+                for (let x = 20; x < w; x += 90) {
+                    if (Math.random() > 0.98) {
+                        const binaryStr = Math.random() > 0.5 ? "011010" : "100101";
+                        gCtx.fillText(binaryStr, x, y);
+                    }
+                }
+            }
+
+            const rows = mapTemplate.length;
+            const cols = mapTemplate[0].length;
+            const dotSpacingX = w / (cols + 4);
+            const dotSpacingY = h / (rows + 2);
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    if (mapTemplate[r][c] === '.') {
+                        const x = (c + 2) * dotSpacingX;
+                        const y = (r + 1.5) * dotSpacingY;
+                        
+                        const wave = Math.sin(pulseTime + (x * 0.005) + (y * 0.005));
+                        gCtx.fillStyle = `rgba(0, 242, 254, ${0.30 + wave * 0.15})`;
+                        
+                        gCtx.beginPath();
+                        gCtx.arc(x, y, 2, 0, Math.PI * 2);
+                        gCtx.fill();
+                    }
+                }
+            }
+
+            gCtx.strokeStyle = 'rgba(0, 242, 254, 0.03)';
+            gCtx.lineWidth = 1;
+            gCtx.shadowBlur = 0;
+            const hexSize = 35;
+            const xSpacing = hexSize * Math.sqrt(3);
+            const ySpacing = hexSize * 1.5;
+
+            for (let y = 0; y < h + hexSize; y += ySpacing) {
+                let offset = (Math.floor(y / ySpacing) % 2) * (xSpacing / 2);
+                for (let x = 0; x < w + xSpacing; x += xSpacing) {
+                    drawHexagon(x + offset, y, hexSize);
+                }
+            }
+
+            lockPositions.forEach((pos, idx) => {
+                const targetX = w * pos.rx;
+                const targetY = h * pos.ry;
+                
+                const pulseAlpha = 0.6 + Math.sin(pulseTime * 1.5 + idx) * 0.3;
+                const glowRadius = 20 + Math.sin(pulseTime * 2 + idx) * 15;
+
+                let glowGrad = gCtx.createRadialGradient(targetX, targetY, 2, targetX, targetY, glowRadius * 2);
+                glowGrad.addColorStop(0, `rgba(0, 242, 254, ${0.25 * pulseAlpha})`);
+                glowGrad.addColorStop(1, 'rgba(2, 6, 23, 0)');
+                gCtx.fillStyle = glowGrad;
+                gCtx.beginPath();
+                gCtx.arc(targetX, targetY, glowRadius * 2, 0, Math.PI * 2);
+                gCtx.fill();
+
+                drawVectorLock(targetX, targetY, pos.size, pulseAlpha);
+            });
+
+            requestAnimationFrame(drawCyberMapEffect);
+        }
+
+        drawCyberMapEffect();
+    </script>
+
+</body>
+</html>
