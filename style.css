@@ -921,7 +921,7 @@ body {
         font-size: 13px;
     }
 }
-.menu-toggle, .hamburger {
+.hamburger-btn {
     display: none;
 }
 
@@ -937,31 +937,33 @@ body {
 
     .logo {
         font-size: 20px;
-        white-space: nowrap;
         z-index: 101;
     }
 
-    .hamburger {
+    .hamburger-btn {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 26px;
         height: 18px;
+        background: none;
+        border: none;
         cursor: pointer;
+        padding: 0;
         z-index: 101;
     }
 
-    .hamburger span {
+    .hamburger-btn span {
         display: block;
         height: 3px;
         width: 100%;
         background-color: #00ffcc;
         border-radius: 2px;
-        transition: all 0.3s ease-on-out;
+        transition: all 0.3s ease;
     }
 
     .nav-links {
-        display: none;
+        display: none; 
         flex-direction: column;
         position: absolute;
         top: 100%;
@@ -976,55 +978,29 @@ body {
         z-index: 100;
     }
 
+    .nav-links.active {
+        display: flex !important;
+    }
+
     .nav-links li {
         width: 100%;
-        text-align: left;
     }
 
     .nav-links a {
         display: block;
         padding: 12px 25px;
         font-size: 15px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .menu-toggle:checked ~ .nav-links {
-        display: flex !important;
-    }
-
-    .menu-toggle:checked + .hamburger span:nth-child(1) {
-        transform: translateY(7.5px) rotate(45deg);
-    }
-    .menu-toggle:checked + .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle:checked + .hamburger span:nth-child(3) {
-        transform: translateY(-7.5px) rotate(-45deg);
-    }
-
-
-    .dropdown {
-        position: relative;
-        width: 100%;
     }
 
     .dropdown-content {
         position: static;
         width: 100%;
         background-color: rgba(20, 30, 50, 0.95) !important;
-        box-shadow: none;
-        padding-left: 15px;
         display: none;
+        padding-left: 15px;
     }
 
     .dropdown:hover .dropdown-content {
         display: block !important;
-    }
-
-    .dropdown-content li a {
-        padding: 10px 20px;
-        font-size: 14px;
-        border-left: 2px solid #00ffcc;
     }
 }

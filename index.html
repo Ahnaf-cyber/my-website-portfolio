@@ -160,12 +160,11 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">AS Cyber <span>Web</span></a>
-            <input type="checkbox" id="menu-toggle" class="menu-toggle">
-        <label for="menu-toggle" class="hamburger">
+            <button class="hamburger-btn" id="mobile-menu-btn">
             <span></span>
             <span></span>
             <span></span>
-        </label>
+        </button>
             <ul class="nav-links">
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <a href="#about"><i class="fas fa-user"></i> About</a>
@@ -825,6 +824,14 @@
 
         drawCyberMapEffect();
     </script>
+    <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links-menu');
+
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
