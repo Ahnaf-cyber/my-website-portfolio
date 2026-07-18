@@ -926,22 +926,29 @@ body {
 }
 
 @media (max-width: 768px) {
-    header {
-        position: relative;
+    .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px;
+        width: 100%;
+        position: relative;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+        white-space: nowrap;
+        z-index: 101;
     }
 
     .hamburger {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 30px;
-        height: 20px;
+        width: 26px;
+        height: 18px;
         cursor: pointer;
-        z-index: 100;
+        z-index: 101;
     }
 
     .hamburger span {
@@ -949,35 +956,75 @@ body {
         height: 3px;
         width: 100%;
         background-color: #00ffcc;
-        border-radius: 3px;
-        transition: all 0.3s ease;
+        border-radius: 2px;
+        transition: all 0.3s ease-on-out;
     }
 
-    .menu-toggle {
-        display: none;
-    }
-
-    .nav-links, header nav {
+    .nav-links {
         display: none;
         flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        padding: 20px 0;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        background-color: rgba(10, 15, 26, 0.98);
+        border-top: 1px solid rgba(0, 255, 204, 0.2);
+        padding: 15px 0;
+        margin: 0;
+        list-style: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+        z-index: 100;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: left;
     }
 
     .nav-links a {
-        padding: 12px 0;
         display: block;
+        padding: 12px 25px;
+        font-size: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .menu-toggle:checked ~ .nav-links {
+        display: flex !important;
+    }
+
+    .menu-toggle:checked + .hamburger span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+    }
+    .menu-toggle:checked + .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle:checked + .hamburger span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+
+    .dropdown {
+        position: relative;
         width: 100%;
     }
 
-    .menu-toggle:checked ~ .nav-links,
-    .menu-toggle:checked ~ nav {
-        display: flex !important;
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        background-color: rgba(20, 30, 50, 0.95) !important;
+        box-shadow: none;
+        padding-left: 15px;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block !important;
+    }
+
+    .dropdown-content li a {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-left: 2px solid #00ffcc;
     }
 }
