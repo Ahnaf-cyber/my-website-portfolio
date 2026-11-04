@@ -62,15 +62,24 @@ body {
 }
 
 .logo-img {
-    height: 46px;
+    height: 36px;
     width: auto;
     display: block;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
 }
 
+.logo .logo-text {
+    color: inherit;
+    line-height: 1;
+}
+
+.logo .logo-text span {
+    color: #00ffcc;
+}
+
 @media (max-width: 768px) {
     .logo-img {
-        height: 36px;
+        height: 30px;
     }
 }
 
@@ -231,6 +240,18 @@ body {
     background-color: #00ffcc;
     box-shadow: 0 0 15px #00ffcc, 0 0 35px #00ffcc, 0 0 65px #00ffcc;
     transform: translateY(-4px); 
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cyber-btn-solid {
+    color: #000;
+    background-color: #00ffcc;
 }
 
 .services-section {
