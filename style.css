@@ -68,18 +68,19 @@ body {
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
 }
 
-.logo .logo-text {
-    color: inherit;
-    line-height: 1;
-}
-
-.logo .logo-text span {
-    color: #00ffcc;
+.logo-wordmark {
+    height: 26px;
+    width: auto;
+    display: block;
 }
 
 @media (max-width: 768px) {
     .logo-img {
         height: 30px;
+    }
+
+    .logo-wordmark {
+        height: 20px;
     }
 }
 
